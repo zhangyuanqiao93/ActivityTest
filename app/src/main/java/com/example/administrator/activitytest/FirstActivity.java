@@ -1,6 +1,7 @@
 package com.example.administrator.activitytest;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -27,20 +29,10 @@ public class FirstActivity extends AppCompatActivity {
         然后将这个值传入setContentView()方法*/
 
         button1 = (Button) findViewById(R.id.button);
+//        button2 = (Button) findViewById(R.id.button2);
 //      setOnClickListener(0为按钮注册一个监听器，点击按钮就会执行onClick()方法，因此弹出方法在onClick()方法中;
-       /* button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Toast.makeText(FirstActivity.this,"Fuck Off",Toast.LENGTH_SHORT).show();
-//                finish();
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
-                Bundle bundle =new Bundle();
-                bundle.putString("test","android");
-                intent.putExtra("test",bundle);
 
-                FirstActivity.this.startActivity(intent);
-            }
-        });*/
+
         popMenu = new PopupMenu(this, findViewById(R.id.button));
         menu = popMenu.getMenu();
         MenuInflater menuInflater = getMenuInflater();
@@ -61,20 +53,39 @@ public class FirstActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              /*  popMenu.show();*/
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
-                Bundle bundle =new Bundle();
-                bundle.putString("test","android");
-                intent.putExtras(bundle);
-
+//                Toast.makeText(FirstActivity.this,"Fuck Off",Toast.LENGTH_SHORT).show();
+//                finish();
+//                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+//                Bundle bundle =new Bundle();
+//                bundle.putString("test","android");
+//                intent.putExtra("test",bundle);
+//                Intent intent = new Intent("com.example.administrator.activitytest.ACTION_START");
+//                intent.addCategory("com.example.administrator.activitytest.ACTION_START");
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://www.baidu.com"));
                 FirstActivity.this.startActivity(intent);
             }
         });
-}
 
+//        button1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//              /*  popMenu.show();*/
+//                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+//                Bundle bundle =new Bundle();
+//                bundle.putString("test","android");
+//                intent.putExtras(bundle);
+////                Intent intent = new Intent(com.example.administrator.ACTION_START);
+//
+//                FirstActivity.this.startActivity(intent);//启动活动FirstActivity
+//            }
+//        });
+}
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
