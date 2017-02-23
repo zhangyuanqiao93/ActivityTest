@@ -66,8 +66,11 @@ public class FirstActivity extends AppCompatActivity {
 //                intent.putExtra("test",bundle);
 //                Intent intent = new Intent("com.example.administrator.activitytest.ACTION_START");
 //                intent.addCategory("com.example.administrator.activitytest.ACTION_START");
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://www.baidu.com"));
+                String Data = "Hello SecondActivity";
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                intent.putExtra("extra_data",Data);
+//                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                intent.setData(Uri.parse("tel:10086"));
                 FirstActivity.this.startActivity(intent);
             }
         });
