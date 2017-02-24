@@ -58,6 +58,8 @@ public class FirstActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+                FirstActivity.this.startActivityForResult(intent,1);//接收两个参数，第一个参数是Intent，第二个参数是请求码
 //                Toast.makeText(FirstActivity.this,"Fuck Off",Toast.LENGTH_SHORT).show();
 //                finish();
 //                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
@@ -65,13 +67,13 @@ public class FirstActivity extends AppCompatActivity {
 //                bundle.putString("test","android");
 //                intent.putExtra("test",bundle);
 //                Intent intent = new Intent("com.example.administrator.activitytest.ACTION_START");
-//                intent.addCategory("com.example.administrator.activitytest.ACTION_START");
-                String Data = "Hello SecondActivity";
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
-                intent.putExtra("extra_data",Data);
-//                Intent intent = new Intent(Intent.ACTION_DIAL);
-//                intent.setData(Uri.parse("tel:10086"));
-                FirstActivity.this.startActivity(intent);
+////                intent.addCategory("com.example.administrator.activitytest.ACTION_START");
+//                String Data = "Hello SecondActivity";
+//                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
+//                intent.putExtra("extra_data",Data);
+////                Intent intent = new Intent(Intent.ACTION_DIAL);
+////                intent.setData(Uri.parse("tel:10086"));
+//                FirstActivity.this.startActivity(intent);
             }
         });
 
@@ -89,6 +91,7 @@ public class FirstActivity extends AppCompatActivity {
 //            }
 //        });
 }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return true;
