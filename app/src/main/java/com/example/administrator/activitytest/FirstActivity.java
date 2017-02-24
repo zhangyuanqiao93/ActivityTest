@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -60,19 +61,20 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
                 FirstActivity.this.startActivityForResult(intent,1);//接收两个参数，第一个参数是Intent，第二个参数是请求码
+
 //                Toast.makeText(FirstActivity.this,"Fuck Off",Toast.LENGTH_SHORT).show();
-//                finish();
+//                finish();//销毁
 //                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
 //                Bundle bundle =new Bundle();
 //                bundle.putString("test","android");
 //                intent.putExtra("test",bundle);
 //                Intent intent = new Intent("com.example.administrator.activitytest.ACTION_START");
-////                intent.addCategory("com.example.administrator.activitytest.ACTION_START");
+////              intent.addCategory("com.example.administrator.activitytest.ACTION_START");
 //                String Data = "Hello SecondActivity";
 //                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
 //                intent.putExtra("extra_data",Data);
-////                Intent intent = new Intent(Intent.ACTION_DIAL);
-////                intent.setData(Uri.parse("tel:10086"));
+////              Intent intent = new Intent(Intent.ACTION_DIAL);
+////              intent.setData(Uri.parse("tel:10086"));//拨号或者链接到网页("http:www.baidu.com")
 //                FirstActivity.this.startActivity(intent);
             }
         });
@@ -107,5 +109,17 @@ public class FirstActivity extends AppCompatActivity {
             default:
         }
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode,Intent data){
+        switch (requestCode){
+            case 1:
+                if(resultCode==RESULT_OK){
+                    String returnedData = data.getStringExtra("data_return");
+                    Log.d("FirstActivity", returnedData);
+                }break;
+            default:
+        }
     }
 }
